@@ -17,39 +17,39 @@
             <div class="wrapper">
                 <table>
                     <tbody>
+                        
+                        <h1 class="game-head">Tic Tac Toe</h1>
+                        
                         <tr>
-                            <h1 class="game-head">Tic Tac Toe</h1>
+                            <td>
+                                <div class="box-space box-space-0"></div>
+                            </td>
+                            <td>
+                                <div class="box-space box-space-1"></div>
+                            </td>
+                            <td>
+                                <div class="box-space box-space-2"></div>
+                            </td>
                         </tr>
                         <tr>
                             <td>
-                                <div class="box-space" data-num="0"></div>
+                                <div class="box-space box-space-3"></div>
                             </td>
                             <td>
-                                <div class="box-space" data-num="1"></div>
+                                <div class="box-space box-space-4"></div>
                             </td>
                             <td>
-                                <div class="box-space" data-num="2"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="box-space" data-num="3"></div>
-                            </td>
-                            <td>
-                                <div class="box-space" data-num="4"></div>
-                            </td>
-                            <td>
-                                <div class="box-space" data-num="5"></div>
+                                <div class="box-space box-space-5"></div>
                             </td>
                         </tr><tr>
                             <td>
-                                <div class="box-space" data-num="6"></div>
+                                <div class="box-space box-space-6"></div>
                             </td>
                             <td>
-                                <div class="box-space" data-num="7"></div>
+                                <div class="box-space box-space-7"></div>
                             </td>
                             <td>
-                                <div class="box-space" data-num="8"></div>
+                                <div class="box-space box-space-8"></div>
                             </td>
                         </tr>
                         <tr>
@@ -79,10 +79,16 @@
                     </tbody>
                 </table>
             </div>
+            <div class="bot-menu">
+                
+                <button id="bot-btn" class="btnbot" onclick="change_mode()">Bot</button>
+                <p class="bot-text">*Click Bot button to Enable/Disable Bot-mode</p>
+
+            </div>
         </div>
 
     </main>
-    <footer>
+    <footer class="box-space-10">
 
     </footer>
     <script src="tik-tac-toe-script.js"></script>
