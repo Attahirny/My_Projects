@@ -57,7 +57,7 @@ html, body {
 button {
     background-color: rgb(152, 199, 157);
     color: black;
-    width: 8vw;
+    width: 65px;
     font-weight: bold;
     border-radius: 1px;
     border-color: black solid;
@@ -119,7 +119,7 @@ table {
 }
 .bot-button {
     color: black;
-    width: 8vw;
+    width: 65px;
     font-weight: bold;
     background-color: rgb(59, 59, 59);
     border-radius: 1px;
