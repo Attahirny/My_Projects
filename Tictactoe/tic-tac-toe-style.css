@@ -1,0 +1,90 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    background-color: blueviolet;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    background-image: -webkit-gradient(radial, 100% 90%, 10, 90% 90%, 800, from(#646cd3), to(#420915));
+}
+
+.game-head {
+    text-align: center;
+    font-family:'Courier New', Courier, monospace;
+    color: rgba(25, 25, 25, alpha);
+    justify-content:space-around;
+}
+
+.box-space {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(56, 28, 28);
+    font-size: 100px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight:lighter;
+    color: aliceblue;
+    border: 0;
+
+
+}
+
+.game-back {
+    background-color: rgb(167, 89, 89);
+    width: 350px;
+    height: auto;
+    border-radius: 2%;
+    box-shadow: 2px;
+    border: 1px black solid;
+    box-sizing: border-box;
+    margin: 10% 20%;
+}
+
+
+table {
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 100px;
+    height: 30px;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+
+}
+
+.play-btn {
+    background-color: rgb(26, 179, 26);
+    cursor: pointer;
+}
+
+.end-btn {
+    background-color: rgb(236, 8, 8);
+    cursor: pointer;
+}
+.game {
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+.text-display {
+    color: rgb(206, 240, 193);
+    text-align: center;
+    font-size: 15px;
+    padding: 10px 0px;
+}
+
+
