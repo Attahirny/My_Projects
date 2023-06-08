@@ -58,8 +58,8 @@ buttons.forEach((button, index) => {
 
             if (currentPlayer === player.O && bot_mode) {
                 let move = computer_move(available);
-                console.log(move)
-                document.querySelector(`.box-space-${move}`).innerHTML = player.computer.toUpperCase();
+                stop = true
+                setTimeout(()=> {insert_move(move)},500);
                 available[move] = player.computer;
                 checkWinner(currentPlayer)
                 currentPlayer = player.X;
@@ -75,7 +75,12 @@ buttons.forEach((button, index) => {
     })
 })
 
+function insert_move(move){
+    document.querySelector(`.box-space-${move}`).innerHTML = player.computer.toUpperCase();
+    stop = false;
 
+
+}
 function check_available(array) {
     for (let i = 0;i<array.length;i++) {
         if (array[i] === 0){
