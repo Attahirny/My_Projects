@@ -122,9 +122,11 @@ function change_mode(){
     let element = document.getElementById("bot-btn")
     element.classList.toggle("bot-button");
     if (bot_mode){
-        element.innerHTML = 'Human' 
+        element.innerHTML = 'Human';
+      document.getElementById("second-player").innerHTML = "Randombot";
     }else {
-        element.innerHTML = 'Bot'
+        element.innerHTML = 'Bot';
+        document.getElementById("second-player").innerHTML = "Human";
     }
     
     refresh();
