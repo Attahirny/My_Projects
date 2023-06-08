@@ -64,6 +64,7 @@ buttons.forEach((button, index) => {
                 available[move] = player.computer;
                 checkWinner(currentPlayer)
                 currentPlayer = player.X;
+                display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
                 
                 
                 
