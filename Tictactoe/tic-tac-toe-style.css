@@ -36,6 +36,7 @@ html, body {
     color: aliceblue;
     border: 0;
     cursor: pointer;
+   user-select: none;
 
 
 }
