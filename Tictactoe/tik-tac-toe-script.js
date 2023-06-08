@@ -123,10 +123,10 @@ function change_mode(){
     element.classList.toggle("bot-button");
     if (bot_mode){
         element.innerHTML = 'Human';
-      document.getElementById("second-player").innerHTML = "Randombot";
+      document.getElementById("second-player").innerHTML = "Human";
     }else {
         element.innerHTML = 'Bot';
-        document.getElementById("second-player").innerHTML = "Human";
+        document.getElementById("second-player").innerHTML = "Randombot";
     }
     
     refresh();
