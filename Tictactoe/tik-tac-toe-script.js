@@ -29,6 +29,7 @@ buttons.forEach((button, index) => {
                 available[index] = currentPlayer;
                 checkWinner(currentPlayer);
                 currentPlayer = player.O;
+                display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
                 
                 
                 
@@ -39,7 +40,7 @@ buttons.forEach((button, index) => {
                     available[index] = currentPlayer;
                     checkWinner(currentPlayer);           
                     currentPlayer = player.X;
-                    console.log('bug')
+                    
                 }
             }
             
