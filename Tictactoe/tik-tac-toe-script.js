@@ -65,7 +65,7 @@ buttons.forEach((button, index) => {
                 available[move] = player.computer;
                 checkWinner(currentPlayer)
                 currentPlayer = player.X;
-                display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
+                
                 
                 
                 
@@ -81,6 +81,7 @@ buttons.forEach((button, index) => {
 function insert_move(move){
     document.querySelector(`.box-space-${move}`).innerHTML = player.computer.toUpperCase();
     stop = false;
+    display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
 
 
 }
@@ -171,7 +172,7 @@ function replay() {
     refresh();
 }
 display('.display', `<p>Scores:</p><p>X = ${score.X}</p><p>O = ${score.O}</p>`);
-display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
+
 
 function notify(){
     alert('Welcome to My game of Tic Tac Toe!\nLets play!');
@@ -179,3 +180,4 @@ function notify(){
 
 
 }
+display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
