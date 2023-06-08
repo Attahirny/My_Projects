@@ -15,9 +15,10 @@ let score = {X:0, O:0};
 let currentPlayer = player.X;
 let buttons = document.querySelectorAll('.box-space');
 let available = [0,0,0,0,0,0,0,0,0];
-let stop = false;
+let stop = true;
 let bot_mode = false;
 
+setTimeout(()=>{notify()},500);
 //Prepare each box to receive moves
 buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
@@ -167,4 +168,10 @@ function replay() {
 }
 display('.display', `<p>Scores:</p><p>X = ${score.X}</p><p>O = ${score.O}</p>`);
 display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
-setTimeout(()=>{alert('Welcome to My game of Tic Tac Toe!\nLets play!')},1000);
+
+function notify(){
+    alert('Welcome to My game of Tic Tac Toe!\nLets play!');
+    stop = false;
+
+
+}
