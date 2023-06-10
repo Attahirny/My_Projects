@@ -44,9 +44,41 @@
             display: inline-block;
         }
 
+        .head, .col {
+            position: relative;
+            -webkit-animation-name: slide;
+            -webkit-animation-duration: 1s;
+            animation-name: slide;
+            animation-duration: 1s;
+        }
+
+        
+        @-webkit-keyframes slide {
+                    from {
+                        bottom: -100px;
+                        opacity: 0;
+                    }
+                    to {
+                        bottom: 0px;
+                        opacity: 1;
+                    }
+                    
+                }
+        @keyframes slide {
+            from {
+                bottom: -100px;
+                opacity: 0;
+            }
+            to {
+                bottom: 0px;
+                opacity: 1;
+            }
+        }
+
         #myContents {
             display: none;
         }
+        
         #loading {
             display: inline-block;
             margin: 10px 0px;
@@ -106,7 +138,7 @@
         </main>
         <footer>
             <div class="footer">
-                <p>&copy; 2023 <a href="https//github.com/Attahirny" target="_blank">Attahirny</a>. All rights reserved.</p>
+                <p>&copy; 2023 <a href="https//github.com/Attahirny" target="_blank" rel="noopener noreferrer">Attahirny</a>. All rights reserved.</p>
             
             </div>
         </footer>
@@ -115,14 +147,11 @@
         const loader = document.getElementById("loading");
 
         function showLoading(){
-            loading = setTimeout(showContent(), 3000);
-            console.log("pass")
-        }
-        function showContent(){
-            loader.style.display = "none";
+            loading = setTimeout(showContent => {loader.style.display = "none";
             document.getElementById("myContents").style.display = "block";
-            document.body.style.display = "block";
+            document.body.style.display = "block";}, 2000);
         }
+    
 
 
     </script>
