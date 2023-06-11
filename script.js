@@ -1,7 +1,7 @@
-const loader = document.getElementById("loading");
+/*const loader = document.getElementById("loading");
 
         function showLoading(){
-            loading = setTimeout(showContent => {loader.style.display = "none";
+            loading = setTimeout(() => {loader.style.display = "none";
             document.getElementById("myContents").style.display = "block"}, 1000);
         }
 
@@ -12,7 +12,16 @@ function show() {
     sidebarButton.style.display = "flex";
     
 }
-console.log(sidebarCancelButton,"pass")
 sidebarCancelButton.addEventListener('click', (e)=>{
     sidebarButton.style.display = "none";
-})
+})*/
+
+document.onreadystatechange = function() {
+    if (document.readyState !== "complete") {
+        document.querySelector("body").style.visibility = "hidden";
+        document.querySelector("#loading").style.visibility = "visible";
+    } else {
+        document.querySelector("#loading").style.display = "none";
+        document.querySelector("body").style.visibility = "visible";
+    }
+}

@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: lightblue;
+    background-color: rgb(48, 48, 53);
     position: fixed;
     z-index: 100;
     flex-direction: row;
@@ -13,6 +13,7 @@
     height: 50px;
     box-shadow: 0px 0px 2px ;
     padding: 0px 15px;
+    color: rgb(236, 231, 226);
 
 }
 
@@ -39,16 +40,16 @@
     align-items: center;
     width: 35px;
     height: 35px;
-    border: 1px solid rgb(48, 48, 48);
+    border: 1px solid rgb(155, 112, 72);
     border-radius: 5px;
     box-shadow: 0px 0px 1px;
-    background-color: transparent;
+    background-color: rgb(215, 241, 241);
 }
 
 .top-bar, .middle-bar, .bottom-bar {
     width: 70%;
     height: 2px;
-    background-color: rgb(46, 39, 39);
+    background-color: rgb(155, 112, 72);
     border-radius: 2px;
     border: none;
 }
