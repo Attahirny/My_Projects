@@ -2,8 +2,7 @@ const loader = document.getElementById("loading");
 
         function showLoading(){
             loading = setTimeout(showContent => {loader.style.display = "none";
-            document.getElementById("myContents").style.display = "block";
-            document.body.style.display = "block";}, 1000);
+            document.getElementById("myContents").style.display = "block"}, 1000);
         }
 
 const sidebarButton = document.querySelector(".side-bar");
