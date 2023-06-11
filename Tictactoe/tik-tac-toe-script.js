@@ -18,7 +18,7 @@ let available = [0,0,0,0,0,0,0,0,0];
 let stop = true;
 let bot_mode = false;
 
-setTimeout(()=>{notify()},500);
+setTimeout(()=>{pop()},500);
 //Prepare each box to receive moves
 buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
@@ -121,19 +121,20 @@ function display(element, content) {
 }
 
 function change_mode(){
-    bot_mode == false ? bot_mode = true : bot_mode = false;
-    let element = document.getElementById("bot-btn")
-    element.classList.toggle("bot-button");
-    if (bot_mode){
-        element.innerHTML = 'Human';
-      document.getElementById("second-player").innerHTML = "Human";
-    }else {
-        element.innerHTML = 'Bot';
-        document.getElementById("second-player").innerHTML = "Randombot";
-    }
+    if(!stop) {
+        bot_mode == false ? bot_mode = true : bot_mode = false;
+        let element = document.getElementById("bot-btn")
+        element.classList.toggle("bot-button");
+        if (bot_mode){
+            element.innerHTML = 'Human';
+        document.getElementById("second-player").innerHTML = "Human";
+        }else {
+            element.innerHTML = 'Bot';
+            document.getElementById("second-player").innerHTML = "Randombot";
+        }
     
-    refresh();
-
+        refresh();
+    }
 }
 
 
@@ -173,11 +174,12 @@ function replay() {
 }
 display('.display', `<p>Scores:</p><p>X = ${score.X}</p><p>O = ${score.O}</p>`);
 
-
-function notify(){
-    alert('Welcome to My game of Tic Tac Toe!\nLets play!');
-    stop = false;
-
-
+function pop() {
+    document.querySelector(".pop-up").style.display = "block"; 
 }
+function done() {
+    document.querySelector(".pop-up").style.display = "none";
+    stop = false;
+}
+
 display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);

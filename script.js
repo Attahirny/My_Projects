@@ -4,9 +4,10 @@
             loading = setTimeout(() => {loader.style.display = "none";
             document.getElementById("myContents").style.display = "block"}, 1000);
         }
-
+*/
 const sidebarButton = document.querySelector(".side-bar");
 const sidebarCancelButton = document.querySelector(".close-bar");
+
 
 function show() {
     sidebarButton.style.display = "flex";
@@ -14,7 +15,7 @@ function show() {
 }
 sidebarCancelButton.addEventListener('click', (e)=>{
     sidebarButton.style.display = "none";
-})*/
+})
 
 document.onreadystatechange = function() {
     if (document.readyState !== "complete") {
@@ -25,3 +26,4 @@ document.onreadystatechange = function() {
         document.querySelector("body").style.visibility = "visible";
     }
 }
+
