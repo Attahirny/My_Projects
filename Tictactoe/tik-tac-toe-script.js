@@ -53,9 +53,7 @@ buttons.forEach((button, index) => {
                 const timer =setTimeout(()=>{display('.text-display', '')}, 1000)
                 pop_display(".winner", 'Its a tie!');
                 display('.text-display-2', '')
-                setTimeout(()=>{refresh()}, 5000)
-                 
-                 
+                  
             }
 
             if (currentPlayer === player.O && bot_mode) {
@@ -146,8 +144,6 @@ function checkWinner(player) {
             const timer =setTimeout(()=>{display('.text-display', '')}, 1000)
             pop_display(".winner", `${currentPlayer.toUpperCase()} Wins!`);
             currentPlayer == 'x' ? score.X += 1 : score.O +=1
-            setTimeout(()=>{refresh()}, 5000)  
-            display('.text-display-2', '');
             
         }
     })
@@ -182,7 +178,7 @@ function pop_display(class_name, content) {
     element.style.display = "flex";
     element.innerHTML = `<p>${content}</p><button class="ok-btn" onclick="done_winner();">Ok</button>`;
     stop = true;
-    const timer = setTimeout(() =>{done_winner()}, 5000);
+    const timer = setTimeout(() =>{done_winner();refresh()}, 5000);
 }
 function done() {
     document.querySelector(".pop-up").style.display = "none";
@@ -191,6 +187,7 @@ function done() {
 
 function done_winner() {
     document.querySelector(".winner").style.display = "none";
+ refresh();
     stop = false;
 }
 display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
