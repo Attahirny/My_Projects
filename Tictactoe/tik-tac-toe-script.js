@@ -52,7 +52,7 @@ buttons.forEach((button, index) => {
                 stop = true;
                 const timer =setTimeout(()=>{display('.text-display', '')}, 1000)
                 pop_display(".winner", 'Its a tie!');
-                display('.text-display-2', '')
+                
                   
             }
 
@@ -188,6 +188,7 @@ function done() {
 function done_winner() {
     document.querySelector(".winner").style.display = "none";
  refresh();
+    display('.text-display-2', '');
     stop = false;
 }
 display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
