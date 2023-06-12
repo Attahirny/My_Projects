@@ -18,7 +18,7 @@ let available = [0,0,0,0,0,0,0,0,0];
 let stop = true;
 let bot_mode = false;
 
-setTimeout(()=>{pop()},500);
+setTimeout(()=>{pop(".pop-up")},500);
 //Prepare each box to receive moves
 buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
@@ -50,8 +50,8 @@ buttons.forEach((button, index) => {
 
             if (check_available(available)) {
                 stop = true;
-                const timer =setTimeout(()=>{display('.text-display', '')}, 1000) 
-                display('.text-display','Its a tie!')
+                const timer =setTimeout(()=>{display('.text-display', '')}, 1000)
+                pop_display(".winner", 'Its a tie!');
                 display('.text-display-2', '')
                 setTimeout(()=>{refresh()}, 1000)
                  
@@ -143,8 +143,8 @@ function checkWinner(player) {
     wins.forEach(win => {
         if (available[win[0]] == player && available[win[1]] == player && available[win[2]] == player) {
             stop = true
-            const timer =setTimeout(()=>{display('.text-display', '')}, 1000) 
-            display('.text-display', `${currentPlayer.toUpperCase()} Wins!`)
+            const timer =setTimeout(()=>{display('.text-display', '')}, 1000)
+            pop_display(".winner", `${currentPlayer.toUpperCase()} Wins!`);
             currentPlayer == 'x' ? score.X += 1 : score.O +=1
             setTimeout(()=>{refresh()}, 1000)  
             display('.text-display-2', '');
@@ -174,12 +174,23 @@ function replay() {
 }
 display('.display', `<p>Scores:</p><p>X = ${score.X}</p><p>O = ${score.O}</p>`);
 
-function pop() {
-    document.querySelector(".pop-up").style.display = "block"; 
+function pop(class_name) {
+    document.querySelector(class_name).style.display = "block"; 
+}
+function pop_display(class_name, content) {
+    const element = document.querySelector(class_name);
+    element.style.display = "flex";
+    element.innerHTML = `<p>${content}</p><button class="ok-btn" onclick="done_winner();">Ok</button>`;
+    stop = true;
+    const timer = setTimeout(() =>{done_winner()}, 900);
 }
 function done() {
     document.querySelector(".pop-up").style.display = "none";
     stop = false;
 }
 
+function done_winner() {
+    document.querySelector(".winner").style.display = "none";
+    stop = false;
+}
 display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
