@@ -118,7 +118,7 @@ button {
     z-index: 12;
     border-radius: 10px;
     box-shadow: inset 0px 0px 3px 0.5;
-    box-shadow: 0px 1px 10px 0.8;
+    box-shadow: 0px 1px 10px 0.8 rgb(159, 185, 161);
     animation: moving 2s linear infinite;
 }
 
@@ -160,4 +160,7 @@ button {
 .leardership table {
     border-collapse: collapse;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6b082a4a55bbb0dedd428a7cbbc34c60eba11232
