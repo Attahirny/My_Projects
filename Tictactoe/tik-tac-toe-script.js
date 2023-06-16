@@ -16,6 +16,7 @@ let currentPlayer = player.X;
 let buttons = document.querySelectorAll('.box-space');
 let available = [0,0,0,0,0,0,0,0,0];
 let stop = true;
+let timer;
 let bot_mode = false;
 
 setTimeout(()=>{pop(".pop-up")},500);
@@ -182,15 +183,25 @@ function pop_display(class_name, content) {
     element.style.display = "flex";
     element.innerHTML = `<p>${content}</p><button class="ok-btn" onclick="done_winner();">Ok</button>`;
     stop = true;
-    const timer = setTimeout(() =>{done_winner()}, 5000);
+    timer = setTimeout(() =>{done_winner()}, 5000);
 }
 function done() {
+    let screen = document.documentElement;
     document.querySelector(".pop-up").style.display = "none";
+    refresh();
     stop = false;
+    if (screen.requestFullscreen){
+        screen.requestFullscreen();
+    } else if (screen.webkitRequestFullscreen){
+        screen.webkitRequestFullscreen();
+    } else if (screen.msRequestFullscreen){
+        screen.msRequestFullscreen();
+    } 
 }
 
 function done_winner() {
     document.querySelector(".winner").style.display = "none";
+    refresh()
     stop = false;
 }
 display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
