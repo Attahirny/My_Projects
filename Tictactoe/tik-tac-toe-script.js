@@ -18,7 +18,10 @@ let available = [0,0,0,0,0,0,0,0,0];
 let stop = true;
 let timer;
 let bot_mode = false;
-
+var player_audio = new Audio('tapo.mp3');
+var r_audio = new Audio('tapx.mp3');
+var win_audio = new Audio('win.wav');
+var play_sound = true;
 setTimeout(()=>{pop(".pop-up")},500);
 //Prepare each box to receive moves
 buttons.forEach((button, index) => {
@@ -27,6 +30,7 @@ buttons.forEach((button, index) => {
             
             if (currentPlayer === player.X) {
                 button.innerHTML = 'X';
+                player_audio.play();
                 available[index] = currentPlayer;
                 checkWinner(currentPlayer);
                 currentPlayer = player.O;
@@ -38,6 +42,7 @@ buttons.forEach((button, index) => {
             else {
                 if (!bot_mode){
                     button.innerHTML = 'O';
+                    player_audio.play();
                     available[index] = currentPlayer;
                     checkWinner(currentPlayer);           
                     currentPlayer = player.X;
@@ -52,6 +57,7 @@ buttons.forEach((button, index) => {
             if (check_available(available)) {
                 stop = true;
                 const timer =setTimeout(()=>{display('.text-display', '')}, 1000)
+                r_audio.play();
                 pop_display(".winner", 'Its a tie!');
                 
                   
@@ -62,7 +68,7 @@ buttons.forEach((button, index) => {
                 stop = true
                 setTimeout(()=> {insert_move(move)},500);
                 available[move] = player.computer;
-                checkWinner(currentPlayer)
+                checkWinner(currentPlayer)                
                 currentPlayer = player.X;
                 
                 
@@ -81,6 +87,7 @@ function insert_move(move){
     document.querySelector(`.box-space-${move}`).innerHTML = player.computer.toUpperCase();
     stop = false;
     display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
+    play_sound? player_audio.play(): nothing
 
 
 }
@@ -142,8 +149,10 @@ function checkWinner(player) {
     wins.forEach(win => {
         if (available[win[0]] == player && available[win[1]] == player && available[win[2]] == player) {
             stop = true
-            const timer =setTimeout(()=>{display('.text-display', '')}, 1000)
+            setTimeout(()=>{display('.text-display', '')}, 1000)
             pop_display(".winner", `${currentPlayer.toUpperCase()} Wins!`);
+            win_audio.play();
+            play_sound = false;
             currentPlayer == 'x' ? score.X += 1 : score.O +=1
             
         }
@@ -160,14 +169,17 @@ function refresh() {
     display('.display', `<p>Scores:</p><p>X = ${score.X}</p><p>O = ${score.O}</p>`);
     display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
     stop = false;
+    play_sound = true;
 
 }
 
 //Delete scores
 function replay() {
-    score.O = 0;
-    score.X = 0;
-    refresh();
+    if (!stop){
+        score.O = 0;
+        score.X = 0;
+        refresh();
+    }
 }
 display('.display', `<p>Scores:</p><p>X = ${score.X}</p><p>O = ${score.O}</p>`);
 
@@ -179,11 +191,7 @@ function pop_display(class_name, content) {
     element.style.display = "flex";
     element.innerHTML = `<p>${content}</p><button class="ok-btn" onclick="done_winner();">Ok</button>`;
     stop = true;
-<<<<<<< HEAD
-    timer = setTimeout(() =>{done_winner()}, 5000);
-=======
-    const timer = setTimeout(() =>{done_winner();refresh()}, 5000);
->>>>>>> 6b082a4a55bbb0dedd428a7cbbc34c60eba11232
+    //timer = setTimeout(() =>{done_winner()}, 5000);
 }
 function done() {
     let screen = document.documentElement;
@@ -201,12 +209,9 @@ function done() {
 
 function done_winner() {
     document.querySelector(".winner").style.display = "none";
-<<<<<<< HEAD
+
     refresh()
-=======
- refresh();
-    display('.text-display-2', '');
->>>>>>> 6b082a4a55bbb0dedd428a7cbbc34c60eba11232
+
     stop = false;
 }
 display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
