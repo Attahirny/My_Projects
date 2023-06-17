@@ -16,7 +16,7 @@ let currentPlayer = player.X;
 let buttons = document.querySelectorAll('.box-space');
 let available = [0,0,0,0,0,0,0,0,0];
 let stop = true;
-let timer;
+var timer;
 let bot_mode = false;
 var player_audio = new Audio('tapo.mp3');
 var r_audio = new Audio('tapx.mp3');
@@ -52,15 +52,15 @@ buttons.forEach((button, index) => {
             
             
             display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`)
-            checkWinner(currentPlayer);
+            let over = checkWinner(currentPlayer);
 
             if (check_available(available)) {
                 stop = true;
                 const timer =setTimeout(()=>{display('.text-display', '')}, 1000)
-                r_audio.play();
+                if (!over){
                 pop_display(".winner", 'Its a tie!');
-                
-                  
+                r_audio.play();
+                }
             }
 
             if (currentPlayer === player.O && bot_mode) {
@@ -154,6 +154,7 @@ function checkWinner(player) {
             win_audio.play();
             play_sound = false;
             currentPlayer == 'x' ? score.X += 1 : score.O +=1
+            return true;
             
         }
     })
@@ -188,10 +189,11 @@ function pop(class_name) {
 }
 function pop_display(class_name, content) {
     const element = document.querySelector(class_name);
+    var action = content === 'Its a tie!' ? "done_winner();change_player(currentPlayer);" : "done_winner();"
     element.style.display = "flex";
-    element.innerHTML = `<p>${content}</p><button class="ok-btn" onclick="done_winner();">Ok</button>`;
+    element.innerHTML = `<p>${content}</p><button class="ok-btn" onclick=${action}>Ok</button>`;
     stop = true;
-    //timer = setTimeout(() =>{done_winner()}, 5000);
+    timer = setTimeout(() =>{if (stop===true){done_winner()}}, 5000);
 }
 function done() {
     let screen = document.documentElement;
@@ -213,5 +215,10 @@ function done_winner() {
     refresh()
 
     stop = false;
+}
+
+
+function change_player(currentPlayer) {
+    currentPlayer = currentPlayer === "x" ? "o" : "x"
 }
 display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
