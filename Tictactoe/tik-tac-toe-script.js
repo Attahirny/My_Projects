@@ -89,7 +89,7 @@ let choose_win;
 let choosen = false;
 let move;
 let last_move;
-/*
+
 function computer_move(moves){
     if (!stop){
         update_possible_moves();                
@@ -144,7 +144,7 @@ function computer_move(moves){
     
     return 10
 }
-*/
+
 function computer_move(){
     let choose_win = null;
     if (!stop){
