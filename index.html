@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="general.css">
     <link rel="stylesheet" href="Header.css">
     <link rel="stylesheet" href="footer.css">
-    
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
 </head>
 <body>
         <div id="loading"></div>
@@ -58,6 +58,8 @@
                         Play
                     </button>
                 </a>
+		    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+		    <a href="#" onclick="signOut();">Sign out</a>
             </div>
             <section class="leardership">
                 <h3>Leardership Board</h3>
@@ -95,5 +97,6 @@
         </footer>
     </div>
     <script src="script.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
