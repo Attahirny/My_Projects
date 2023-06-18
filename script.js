@@ -27,15 +27,12 @@ document.onreadystatechange = function() {
     }
 }
 
-function consoleLog(message) {
-       document.querySelector(".console").innerHTML += `<br><h3>${message}</h3>`;
-}
+
 
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('User signed out.');
-            consoleLog('User signed out.');
     });
   }
 
@@ -45,8 +42,4 @@ function onSignIn(googleUser) {
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  consoleLog('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  consoleLog('Name: ' + profile.getName());
-  consoleLog('Image URL: ' + profile.getImageUrl());
-  consoleLog('Email: ' + profile.getEmail()); 
 }
