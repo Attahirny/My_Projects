@@ -147,7 +147,7 @@ button {
 }
 
 .leardership {
-    display: none;
+    display: block;
     margin: 10px 20px;
     width: 49%;
     height: 500px;
