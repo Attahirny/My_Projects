@@ -110,7 +110,7 @@ table {
     padding: 10px 0px;
 }
 .box-space-10 {
-    display: none;
+    /*display: none;*/
 }
 .bot-menu {
     display: block;
