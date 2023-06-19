@@ -7,13 +7,21 @@
 	<link rel="stylesheet" href="tic-tac-toe-style.css">
 
 </head>
-<body class="wrapper">
+<body>
     <header>
         <div class="loading"></div>
     
     </header>
-    <main class="game-back">
-       <br> 
+    <main>
+       <div class="pop-up">
+            <div class="pop-up-body">
+                <p><strong>Welcome to My game of Tic Tac Toe</strong></p>
+                <p>Lets play!</p>
+                <button class="ok-btn" onclick="done();">Ok</button>
+            </div>            
+       </div>
+       <div class="winner"></div>
+       <div
        <div class="game">
             <div class="wrapper">
                 <table>
@@ -74,7 +82,7 @@
                             
                             </td>
                             <td>
-                                <button class="btn end-btn" onclick="refresh();">Clear</button>
+                                <button class="btn end-btn" onclick="if(!stop){refresh();}">Clear</button>
                             </td>
                         </tr>
                     </tbody>
@@ -89,7 +97,9 @@
         </div>
 
     </main>
-    <footer class="box-space-10">
+    <footer>
+        <div class="box-space-10"></div>
+        <p>&copy; 2023 <a class="footer-link" href="https://github.com/Attahirny" target="_blank" rel="noopener noreferrer">Attahirny</a>. All rights reserved.</p>
 
     </footer>
     <script src="tik-tac-toe-script.js"></script>

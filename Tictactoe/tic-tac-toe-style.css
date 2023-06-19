@@ -44,12 +44,11 @@ html, body {
     background-color: rgb(41, 21, 21);
 }
 
-.game-back {
+main {
     background-color: rgb(167, 89, 89);
-    width: 350px;
+    width: auto;
     height: auto;
     border-radius: 2%;
-    box-shadow: 2px;
     border: 1px black solid;
     box-sizing: border-box;
     margin: 10% 20%;
@@ -100,8 +99,10 @@ table {
 }
 .game {
     height: 100%;
-    width: 100%;
+    width: 300px;
     display: table;
+    padding: 0px 17px;
+    margin: auto;
 }
 .text-display {
     color: rgb(206, 240, 193);
@@ -139,4 +140,79 @@ table {
     font-size: 8px;
     padding-top: 3px;
 
+}
+
+.pop-up, .winner {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pop-up-body, .winner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 300px;
+    height: 200px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    background-color: rgb(129, 197, 197);
+    border-radius: 20px;
+    padding: 10px;
+    border: 2px #420915;
+    box-shadow: 1px 1px 2px;
+}
+
+.ok-btn {
+    margin: 100px 10px 20px 10px;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px black;
+    background-color: rgb(236, 222, 94);
+}
+
+.ok-btn:hover {    
+    box-shadow: 0px 0px 4px black;
+    background-color: rgb(230, 211, 49);
+}
+
+footer {
+    position: fixed;       
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+footer p {
+    color: rgb(182, 192, 192);
+}
+
+footer a {
+    color: rgb(19, 18, 18);
+}
+
+footer a:hover {
+    color: rgb(78, 4, 4);
+}
+
+.winner {
+    display: none;
+    top: 75%;
+    width: 150px;
+    height: 100px;
+
+}
+
+.winner p {
+    position: absolute;
+    top: 20%;
 }
