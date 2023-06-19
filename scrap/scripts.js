@@ -109,4 +109,76 @@ function do_it(){
   right_button.style.display = 'none';
   left_button.style.display = 'none';
 }
+/*
+function callback(result){
+  console.log("Async Operation", result)
+}
+setTimeout(response => callback(response),2000)
+
+fetchResource(url, successCallback, failureCallback)
+function successCallback(result){
+  console.log("resource found", result);
+}
+function failureCallback(error){
+  console.error("resource Not found", error);
+}
+
+const promise = new Promise((resolve, reject) => {
+  const num = 10;
+  if (num >= 5) {
+    setTimeout(() => resolve("promise fulfiled"),2000);
+  } else {
+    reject("promises failed!");
+  }
+  //setTimeout(() => resolve("Done!"), 2000);
+});
+
+function handleResolve(value){
+  console.log(value);
+}
+
+function handleReject(reason) {
+  console.error(reason);
+}
+
+promise.then(handleResolve, handleReject)
+
+
+const promise1 = new Promise((resolve, reject) => {
+  const num = 10;
+  if (num >= 5) {
+    setTimeout(() => reject("promise fulfiled"),2000);
+  } else {
+    resolve("promises failed!");
+  }
+  setTimeout(() => reject("Done!"), 2001);
+});
+
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("promise fulfiled"),2000); 
+    //reject("promises failed!");
+  
+});
+
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("promises failed!"),3000);
+
+});
+
+Promise.any([promise1, promise2, promise3]).then(value => {console.log(value)})
+.catch((error)=>{console.error(error)})*/
+
+
+async function example(){
+try {
+  const response = await new Promise(resolve => setTimeout( () => resolve("yeessss"),2000))
+  const result = await response.length;
+  console.error(result);
+} catch (error) {
+  console.log( `${error} found`)
+} finally {
+  console.log("hehe")
+}
+}
+example()
 
