@@ -1,0 +1,128 @@
+
+.nav-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lightblue;
+    position: fixed;
+    z-index: 100;
+    flex-direction: row;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 30px;
+    box-shadow: 0px 0px 2px ;
+    padding: 0px 5px;
+
+}
+
+.head-title {
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.head-title-text {
+    font-size: 18px;
+}
+
+.left-header .right-header {
+    width: 50px;
+    background-color: rgb(79, 117, 105);
+}
+
+.sidebar-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 1px;
+    background-color: rgb(80, 136, 85);
+}
+
+.top-bar, .middle-bar, .bottom-bar {
+    width: 10px;
+    height: 2px;
+    background-color: rgb(46, 39, 39);
+    border-radius: 2px;
+
+}
+.top-bar {
+    margin-top: 5px;
+}
+
+.bottom-bar {
+    margin-bottom: 5px;
+}
+
+.side-bar {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    z-index: 50;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 100px;
+    border-right: 1px solid black;
+    padding-top: 60px;
+    background-color: rgb(85, 149, 170);
+}
+
+.close-bar, .side-bar-title, .cross-1, .cross-2{
+    position: absolute;
+    top: 30px;
+    height: 20px;
+}
+
+.close-bar {
+    top: 30px;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: red;
+    cursor: pointer;
+}
+
+.cross-1, .cross-2 {
+    top: 9px;
+    right: 5px;
+    width: 10px;
+    height: 2px;
+    background-color: black; 
+}
+
+.cross-1 {
+    transform: rotate(135deg);
+}
+
+.cross-2 {
+    transform: rotate(45deg);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 30px;
+    margin-bottom: 2px;
+    background-color: aqua;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    background-color: rgb(73, 248, 248);
+}
+
+.side-bar-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 15px;
+    margin-top: 5px;
+}
