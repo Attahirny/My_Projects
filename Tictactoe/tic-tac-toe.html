@@ -21,7 +21,7 @@
             </div>            
        </div>
        <div class="winner"></div>
-       <div
+       
        <div class="game">
             <div class="wrapper">
                 <table>
@@ -76,13 +76,13 @@
                         </tr>                                         
                         <tr>
                             <td>
-                                <button class="btn play-btn" onclick="replay();">New Game</button>
+                                <button class="btn play-btn" onclick="refresh(true);">New Game</button>
                             </td>
                             <td>
                             
                             </td>
                             <td>
-                                <button class="btn end-btn" onclick="if(!stop){refresh();}">Clear</button>
+                                <button class="btn end-btn" onclick="refresh();">Clear</button>
                             </td>
                         </tr>
                     </tbody>
@@ -91,7 +91,7 @@
             <div class="bot-menu">
                 
                 <button id="bot-btn" class="btnbot" onclick="change_mode()">Bot</button>
-                <p class="bot-text">*Click this button to play with <strong id="second-player">Randombot</strong></p>
+                <p class="bot-text">*Click this button to play with <strong id="second-player">Smartbot</strong></p>
 
             </div>
         </div>
@@ -102,6 +102,6 @@
         <p>&copy; 2023 <a class="footer-link" href="https://github.com/Attahirny" target="_blank" rel="noopener noreferrer">Attahirny</a>. All rights reserved.</p>
 
     </footer>
-    <script src="tik-tac-toe-script.js"></script>
+    <script src="tik-tac-toe-script-gpt.js"></script>
 </body>
 </html>

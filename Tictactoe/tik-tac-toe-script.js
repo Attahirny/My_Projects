@@ -87,7 +87,7 @@ function insert_move(move){
     document.querySelector(`.box-space-${move}`).innerHTML = player.computer.toUpperCase();
     stop = false;
     display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
-    play_sound? player_audio.play(): nothing
+    play_sound? player_audio.play(): null
 
 
 }
