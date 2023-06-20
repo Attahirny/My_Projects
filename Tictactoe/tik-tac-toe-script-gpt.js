@@ -1,5 +1,7 @@
 // set up the game board
 const board = Array.from(document.querySelectorAll('.box-space'));
+const dropdownItem = Array.from(document.querySelectorAll('.dropdown-item'));
+let dropdwon = document.querySelector(".dropdown-content");
 let score = {X:0, O:0, state: true};
 
 // define players
@@ -7,7 +9,7 @@ const player1 = 'X';
 const player2 = 'O';
 
 let currentPlayer = player1;
-let bot_mode = false;
+let bot_mode = "Human";
 var player_audio = new Audio('tapo.mp3');
 var r_audio = new Audio('tapx.mp3');
 var win_audio = new Audio('win.wav');
@@ -156,10 +158,10 @@ board.forEach(cell => {
     if (e.target.textContent || !gameStatus) {
       return;
     }
-
-    e.target.textContent = currentPlayer;
-    player_audio.play();
-    
+    if (gameStatus === "running") {
+      e.target.textContent = currentPlayer;
+      player_audio.play();
+    }
     if (checkGameOver()) {
       const result = checkGameOver();
       if (result === 'tie') {
@@ -174,17 +176,27 @@ board.forEach(cell => {
         refresh();
       }
     } else {
-      switchPlayers();
-      if (bot_mode) {
+      if (gameStatus === "running") {
+        switchPlayers();
+      }
+      if (bot_mode !== "Human" ) {
         gameStatus = false;
-        setTimeout(() => {gameStatus = true; gameStatus ? botMove() : null; }, 500);
+        setTimeout(() => {gameStatus = "running"; gameStatus ? botMove() : null; }, 500);
       }
     }
   });
 });
 
 
-
+dropdownItem.forEach((item) => {
+  item.addEventListener("click", () => {
+    if (gameStatus === "running") {
+      bot_mode = item.textContent;      
+      dropdwon.style.display = "none";
+      change_mode();
+  }
+  })
+});
 
 //Function to insert content to element using selector
 function render(content, element) {
@@ -210,19 +222,18 @@ function refresh(newGame=false) {
 
 //Function to toggle second player
 function change_mode(){
-  bot_mode == false ? bot_mode = true : bot_mode = false;
-  let element = document.getElementById("bot-btn")
-  element.classList.toggle("bot-button");
-  if (bot_mode){
+  let element = document.getElementById("bot-btn");
+  if (bot_mode === "Human"){
       element.innerHTML = 'Human';
     document.getElementById("second-player").innerHTML = "Human";
-  }else {
-      element.innerHTML = 'Bot';
-      document.getElementById("second-player").innerHTML = "Smartbot";
-  }
-  
+  } else if (bot_mode === "RandomBot") {
+      element.innerHTML = 'RandomBot';
+      document.getElementById("second-player").innerHTML = "RandomBot";
+  } else if (bot_mode === "SmartBot") {
+    element.innerHTML = 'SmartBot';
+    document.getElementById("second-player").innerHTML = "SmartBot";
+}
   refresh(true);
-
 }
 
 function pop(class_name) {
@@ -238,6 +249,7 @@ function pop_display(class_name, content) {
     //timer = setTimeout(() =>{done_winner()}, 5000);
 }
 function done() {
+    gameStatus = 'running';
     let screen = document.documentElement;
     document.querySelector(".pop-up").style.display = "none";
     refresh();
@@ -263,10 +275,9 @@ function done_winner() {
 if (score.state) {
   score.state = false;
   localStorage.setItem("score", JSON.stringify(score));
-  setTimeout(()=>{pop(".pop-up");render(`Its ${currentPlayer} Turn!`,'.text-display-2');},500);  
+  setTimeout(()=>{pop(".pop-up");render(`Its ${currentPlayer} Turn!`,'.text-display-2');gameStatus = "false"},500);  
 } else {
   score = JSON.parse(localStorage.getItem("score"));
-  console.log(score)
 }
 
 

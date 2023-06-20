@@ -87,12 +87,18 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div>            
             <div class="bot-menu">
-                
-                <button id="bot-btn" class="btnbot" onclick="change_mode()">Bot</button>
-                <p class="bot-text">*Click this button to play with <strong id="second-player">Smartbot</strong></p>
-
+                <div class="dropdown">
+                    <button id="bot-btn" class="btnbot" onclick="
+                    if ( gameStatus === 'running') {dropdwon.style.display = 'block';}">Human</button>
+                    <div class="dropdown-content">
+                    <p class="dropdown-item">Human</p>
+                    <p class="dropdown-item" style="display: none;">RandomBot</p>
+                    <p class="dropdown-item">SmartBot</p>
+                    </div>
+                </div>
+                <p class="bot-text">*You are playing with <strong id="second-player">Human</strong></p>
             </div>
         </div>
 
