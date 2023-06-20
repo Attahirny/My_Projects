@@ -16,9 +16,13 @@ let currentPlayer = player.X;
 let buttons = document.querySelectorAll('.box-space');
 let available = [0,0,0,0,0,0,0,0,0];
 let stop = true;
+var timer;
 let bot_mode = false;
-
-setTimeout(()=>{notify()},500);
+var player_audio = new Audio('tapo.mp3');
+var r_audio = new Audio('tapx.mp3');
+var win_audio = new Audio('win.wav');
+var play_sound = true;
+setTimeout(()=>{pop(".pop-up")},500);
 //Prepare each box to receive moves
 buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
@@ -26,6 +30,7 @@ buttons.forEach((button, index) => {
             
             if (currentPlayer === player.X) {
                 button.innerHTML = 'X';
+                player_audio.play();
                 available[index] = currentPlayer;
                 checkWinner(currentPlayer);
                 currentPlayer = player.O;
@@ -37,6 +42,7 @@ buttons.forEach((button, index) => {
             else {
                 if (!bot_mode){
                     button.innerHTML = 'O';
+                    player_audio.play();
                     available[index] = currentPlayer;
                     checkWinner(currentPlayer);           
                     currentPlayer = player.X;
@@ -46,16 +52,15 @@ buttons.forEach((button, index) => {
             
             
             display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`)
-            checkWinner(currentPlayer);
+            let over = checkWinner(currentPlayer);
 
             if (check_available(available)) {
                 stop = true;
-                const timer =setTimeout(()=>{display('.text-display', '')}, 1000) 
-                display('.text-display','Its a tie!')
-                display('.text-display-2', '')
-                setTimeout(()=>{refresh()}, 1000)
-                 
-                 
+                const timer =setTimeout(()=>{display('.text-display', '')}, 1000)
+                if (!over){
+                pop_display(".winner", 'Its a tie!');
+                r_audio.play();
+                }
             }
 
             if (currentPlayer === player.O && bot_mode) {
@@ -63,7 +68,7 @@ buttons.forEach((button, index) => {
                 stop = true
                 setTimeout(()=> {insert_move(move)},500);
                 available[move] = player.computer;
-                checkWinner(currentPlayer)
+                checkWinner(currentPlayer)                
                 currentPlayer = player.X;
                 
                 
@@ -82,6 +87,7 @@ function insert_move(move){
     document.querySelector(`.box-space-${move}`).innerHTML = player.computer.toUpperCase();
     stop = false;
     display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
+    play_sound? player_audio.play(): null
 
 
 }
@@ -121,19 +127,20 @@ function display(element, content) {
 }
 
 function change_mode(){
-    bot_mode == false ? bot_mode = true : bot_mode = false;
-    let element = document.getElementById("bot-btn")
-    element.classList.toggle("bot-button");
-    if (bot_mode){
-        element.innerHTML = 'Human';
-      document.getElementById("second-player").innerHTML = "Human";
-    }else {
-        element.innerHTML = 'Bot';
-        document.getElementById("second-player").innerHTML = "Randombot";
-    }
+    if(!stop) {
+        bot_mode == false ? bot_mode = true : bot_mode = false;
+        let element = document.getElementById("bot-btn")
+        element.classList.toggle("bot-button");
+        if (bot_mode){
+            element.innerHTML = 'Human';
+        document.getElementById("second-player").innerHTML = "Human";
+        }else {
+            element.innerHTML = 'Bot';
+            document.getElementById("second-player").innerHTML = "Randombot";
+        }
     
-    refresh();
-
+        refresh();
+    }
 }
 
 
@@ -142,11 +149,12 @@ function checkWinner(player) {
     wins.forEach(win => {
         if (available[win[0]] == player && available[win[1]] == player && available[win[2]] == player) {
             stop = true
-            const timer =setTimeout(()=>{display('.text-display', '')}, 1000) 
-            display('.text-display', `${currentPlayer.toUpperCase()} Wins!`)
+            setTimeout(()=>{display('.text-display', '')}, 1000)
+            pop_display(".winner", `${currentPlayer.toUpperCase()} Wins!`);
+            win_audio.play();
+            play_sound = false;
             currentPlayer == 'x' ? score.X += 1 : score.O +=1
-            setTimeout(()=>{refresh()}, 1000)  
-            display('.text-display-2', '');
+            return true;
             
         }
     })
@@ -162,22 +170,55 @@ function refresh() {
     display('.display', `<p>Scores:</p><p>X = ${score.X}</p><p>O = ${score.O}</p>`);
     display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);
     stop = false;
+    play_sound = true;
 
 }
 
 //Delete scores
 function replay() {
-    score.O = 0;
-    score.X = 0;
-    refresh();
+    if (!stop){
+        score.O = 0;
+        score.X = 0;
+        refresh();
+    }
 }
 display('.display', `<p>Scores:</p><p>X = ${score.X}</p><p>O = ${score.O}</p>`);
 
-
-function notify(){
-    alert('Welcome to My game of Tic Tac Toe!\nLets play!');
+function pop(class_name) {
+    document.querySelector(class_name).style.display = "block"; 
+}
+function pop_display(class_name, content) {
+    const element = document.querySelector(class_name);
+    var action = content === 'Its a tie!' ? "done_winner();change_player(currentPlayer);" : "done_winner();"
+    element.style.display = "flex";
+    element.innerHTML = `<p>${content}</p><button class="ok-btn" onclick=${action}>Ok</button>`;
+    stop = true;
+    timer = setTimeout(() =>{if (stop===true){done_winner()}}, 5000);
+}
+function done() {
+    let screen = document.documentElement;
+    document.querySelector(".pop-up").style.display = "none";
+    refresh();
     stop = false;
+    if (screen.requestFullscreen){
+        screen.requestFullscreen();
+    } else if (screen.webkitRequestFullscreen){
+        screen.webkitRequestFullscreen();
+    } else if (screen.msRequestFullscreen){
+        screen.msRequestFullscreen();
+    } 
+}
+
+function done_winner() {
+    document.querySelector(".winner").style.display = "none";
+
+    refresh()
+
+    stop = false;
+}
 
 
+function change_player(currentPlayer) {
+    currentPlayer = currentPlayer === "x" ? "o" : "x"
 }
 display('.text-display-2', `Its ${currentPlayer.toUpperCase()} Turn!`);

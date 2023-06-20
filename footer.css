@@ -1,0 +1,21 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    background-color: rgb(48, 48, 53);
+    color: rgb(194, 218, 218);
+    
+}
+.footer-link {
+    color: rgb(168, 223, 223);
+    text-decoration-line: underline;
+}
+
+.footer-link:hover {
+    color: rgb(109, 103, 103);
+    text-decoration-line: underline;
+}

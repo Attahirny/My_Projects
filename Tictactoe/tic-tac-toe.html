@@ -7,13 +7,21 @@
 	<link rel="stylesheet" href="tic-tac-toe-style.css">
 
 </head>
-<body class="wrapper">
+<body>
     <header>
         <div class="loading"></div>
     
     </header>
-    <main class="game-back">
-       <br> 
+    <main>
+       <div class="pop-up">
+            <div class="pop-up-body">
+                <p><strong>Welcome to My game of Tic Tac Toe</strong></p>
+                <p>Lets play!</p>
+                <button class="ok-btn" onclick="done();">Ok</button>
+            </div>            
+       </div>
+       <div class="winner"></div>
+       
        <div class="game">
             <div class="wrapper">
                 <table>
@@ -68,7 +76,7 @@
                         </tr>                                         
                         <tr>
                             <td>
-                                <button class="btn play-btn" onclick="replay();">New Game</button>
+                                <button class="btn play-btn" onclick="refresh(true);">New Game</button>
                             </td>
                             <td>
                             
@@ -83,15 +91,17 @@
             <div class="bot-menu">
                 
                 <button id="bot-btn" class="btnbot" onclick="change_mode()">Bot</button>
-                <p class="bot-text">*Click this button to play with <strong id="second-player">Randombot</strong></p>
+                <p class="bot-text">*Click this button to play with <strong id="second-player">Smartbot</strong></p>
 
             </div>
         </div>
 
     </main>
-    <footer class="box-space-10">
+    <footer>
+        <div class="box-space-10"></div>
+        <p>&copy; 2023 <a class="footer-link" href="https://github.com/Attahirny" target="_blank" rel="noopener noreferrer">Attahirny</a>. All rights reserved.</p>
 
     </footer>
-    <script src="tik-tac-toe-script.js"></script>
+    <script src="tik-tac-toe-script-gpt.js"></script>
 </body>
 </html>
