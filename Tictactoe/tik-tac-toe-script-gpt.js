@@ -1,6 +1,6 @@
 // set up the game board
 const board = Array.from(document.querySelectorAll('.box-space'));
-let score = {X:0, O:0};
+let score = {X:0, O:0, state: true};
 
 // define players
 const player1 = 'X';
@@ -153,13 +153,13 @@ function botMove() {
 // add event listener for cell clicks
 board.forEach(cell => {
   cell.addEventListener('click', e => {
-    if (e.target.textContent) {
+    if (e.target.textContent || !gameStatus) {
       return;
     }
-    if (gameStatus){
-      e.target.textContent = currentPlayer;
-      player_audio.play();
-    }
+
+    e.target.textContent = currentPlayer;
+    player_audio.play();
+    
     if (checkGameOver()) {
       const result = checkGameOver();
       if (result === 'tie') {
@@ -260,4 +260,14 @@ function done_winner() {
     
 }
 
-setTimeout(()=>{pop(".pop-up");render(`Its ${currentPlayer} Turn!`,'.text-display-2');},500);
+if (score.state) {
+  score.state = false;
+  localStorage.setItem("score", JSON.stringify(score));
+  setTimeout(()=>{pop(".pop-up");render(`Its ${currentPlayer} Turn!`,'.text-display-2');},500);  
+} else {
+  score = JSON.parse(localStorage.getItem("score"));
+  console.log(score)
+}
+
+
+
