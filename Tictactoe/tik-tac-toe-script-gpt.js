@@ -133,16 +133,18 @@ function botMove() {
     if (checkGameOver()) {
         const result = checkGameOver();
       if (result === 'tie') {
+        gameStatus = false;
         pop_display(".winner", 'Its a tie!');
         r_audio.play();
-        refresh();
+        setTimeout(() => {refresh();gameStatus = 'running'}, 1000);
         switchPlayers();
       } else {
+        gameStatus = false;
         pop_display(".winner", `${currentPlayer} Wins!`);
         win_audio.play();
         play_sound = false;
         result === "X" ? score.X +=1 : score.O += 1;
-        refresh();
+        setTimeout(() => {refresh();gameStatus = 'running'}, 1000);
       }
     } else {
       switchPlayers();
@@ -163,15 +165,17 @@ board.forEach(cell => {
     if (checkGameOver()) {
       const result = checkGameOver();
       if (result === 'tie') {
+        gameStatus = false;
         pop_display(".winner", 'Its a tie!');
         r_audio.play();
-        refresh();
+        setTimeout(() => {refresh();gameStatus = 'running'}, 1000);
       } else {
+        gameStatus = false;
         pop_display(".winner", `${currentPlayer} Wins!`);
         win_audio.play();
         play_sound = false;
         result === "X" ? score.X +=1 : score.O += 1;
-        refresh();
+        setTimeout(() => {refresh();gameStatus = 'running'}, 1000);
       }
     } else {
       switchPlayers();
